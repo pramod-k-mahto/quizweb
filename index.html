@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="main">
+      <input type="checkbox" id="chk" aria-hidden="true" />
+      <div class="signup">
+        <form>
+          <label for="chk" aria-hidden="true">Sign up</label>
+          <input
+            type="text"
+            name="first_name"
+            placeholder="First Name"
+            required=""
+            class="f_name"
+          />
+          <input
+            type="text"
+            name="last_name"
+            placeholder="Last Name"
+            required=""
+            class="l_name"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required=""
+            class="email"
+          />
+          <input
+            type="password"
+            name="pswd"
+            placeholder="Password"
+            required=""
+            class="pswd"
+          />
+          <input
+            type="password"
+            name="confirm_pswd"
+            placeholder="Confirm Password"
+            required=""
+            class="cpaswd"
+          />
+          <button type="submit" onclick="singUp(event)">Sign up</button>
+        </form>
+      </div>
+      <div class="login">
+        <form>
+          <label for="chk" aria-hidden="true">Login</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required=""
+            class="login_email"
+          />
+          <input
+            type="password"
+            name="pswd"
+            placeholder="Password"
+            required=""
+            class="login_password"
+          />
+          <button type="submit" onclick="login(event)">Login</button>
+        </form>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    async function singUp(e) {
+      e.preventDefault();
+      const first_name = document.querySelector(".f_name").value;
+      const last_name = document.querySelector(".l_name").value;
+      const email = document.querySelector(".email").value;
+      const pswd = document.querySelector(".pswd").value;
+      const cpaswd = document.querySelector(".cpaswd").value;
+      if (pswd === cpaswd) {
+        const singUpData = {
+          first_name,
+          last_name,
+          email,
+          pswd,
+        };
+
+        try {
+          const response = await fetch("http://localhost:3000/signup", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(singUpData),
+          });
+          console.log(response);
+
+          if (response.ok) {
+            alert("Signup successful!");
+          } else {
+            alert("Signup failed. Please try again.");
+          }
+        } catch (error) {
+          console.error("Error submitting signup:", error);
+          alert("An error occurred. Please try again later.");
+        }
+      } else {
+        alert("Enter same password and Confirm Password");
+      }
+    }
+
+    async function login(e) {
+      e.preventDefault(); // Prevent form submission
+      const email = document.querySelector(".login_email").value;
+      const pswd = document.querySelector(".login_password").value;
+      // console.log('login',email,pswd)
+
+      const loginData = {
+        email,
+        pswd,
+      };
+
+      // console.log('login',loginData)
+      try {
+        const response = await fetch("http://localhost:3000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(loginData),
+        });
+        console.log(response);
+        if (response.ok) {
+          // alert("Login successful!");
+          window.location.href = "home.html";
+        } else {
+          alert("login failed. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error submitting Login:", error);
+        alert("An error occurred. Please try again later.");
+      }
+    }
+  </script>
+</html>

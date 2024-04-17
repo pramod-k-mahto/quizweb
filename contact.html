@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="row">
+                <h2>Contact Us</h2>
+                <p>Got a question? Interested in our services? Have some suggestions or just want to say hi? Contact us using the form below.</p>
+                <div class="column">
+                    <form id="contactForm" action="http://localhost:3000/submitContact" method="post">
+                        <label for="fname">First Name</label>
+                        <input type="text" name="fname" id="fname" placeholder="Enter your first name">
+
+                        <label for="lname">Last Name</label>
+                        <input type="text" name="lname" id="lname" placeholder="Enter your last name">
+
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" placeholder="Enter your email address">
+
+                        <label for="contact">Contact Number</label>
+                        <input type="text" name="contact" id="contact" placeholder="Enter your contact number">
+
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" style="height:120px" placeholder="Write your message"></textarea>
+
+                        <input type="submit" value="Send Message">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

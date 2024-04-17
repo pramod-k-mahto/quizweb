@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Question</title>
+    <link rel="stylesheet" href="addQuestion.css">
+</head>
+<body>
+    <div class="container">
+        <h3>Add New Question</h3>
+        <form action="http://localhost:3000/addQuestion" method="post">
+            <label for="questionText">Question Text</label>
+            <input type="text" id="questionText" name="questionText" placeholder="Write the question" required>
+
+            <label for="option1">Option 1</label>
+            <input type="text" id="option1" name="options[]" placeholder="write option one" required>
+
+            <label for="option2">Option 2</label>
+            <input type="text" id="option2" name="options[]" placeholder="write option two" required>
+
+            <label for="option3">Option 3</label>
+            <input type="text" id="option3" name="options[]" placeholder="write option three" required>
+
+            <label for="option4">Option 4</label>
+            <input type="text" id="option4" name="options[]" placeholder="write option four" required>
+
+            <label for="correctAnswer">Correct Answer</label>
+            <input type="text" id="correctAnswer" name="correctAnswer" placeholder="write correct answer" required>
+
+            <button type="submit">Add Question</button>
+        </form>
+    </div>
+</body>
+</html>

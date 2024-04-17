@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Data</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 5px;
+            background-color: #f4f4f4;
+        }
+        #addQuestion {
+            position: absolute;
+            right: 2px;
+            top: 0px;
+            margin: 12px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            display: inline-block;
+            padding: 5px 10px;
+            text-decoration: none;
+            background-color: #008CBA;
+            color: white;
+            border-radius: 3px;
+            margin-right: 5px;
+        }
+
+        a:hover {
+            background-color: #00567D;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz Data</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Question Text</th>
+            <th>Options</th>
+            <th>Correct Answer</th>
+            <th>Action</th>
+        </tr>
+        <% questions.forEach((question,index) => { %>
+            <tr>
+                <td><%= index+1 %></td>
+                <td><%= question.question_text %></td>
+                <td>
+                    <ul>
+                        <% question.options.forEach(option => { %>
+                            <li><%= option %></li>
+                        <% }); %>
+                    </ul>
+                </td>
+                <td><%= question.correct_answer %></td>
+                <td>
+                    <a href="http://localhost:3000/edit/<%= question.id %>">Edit</a>
+                    <a href="http://localhost:3000/delete/<%= question.id %>">Delete</a>
+                </td>
+            </tr>
+        <% }); %>
+    </table>
+</body>
+</html>
